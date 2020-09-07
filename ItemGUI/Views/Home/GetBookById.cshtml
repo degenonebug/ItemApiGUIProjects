@@ -1,0 +1,63 @@
+﻿@model ItemGUI.ViewModels.CompleteBookViewModel
+@{
+    ViewData["Title"] = "GetBookById";
+}
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<h3>@ViewBag.BookMessage</h3>
+<h3 class="text-success">@ViewBag.SuccessMessage</h3>
+<div>
+    <h2>Детали товара</h2>
+    <br />
+    <table class="table">
+        <tr>
+            <th>Наименование товара:</th>
+            <td>@Model.Book.Title</td>
+        </tr>
+        <tr>
+            <th>Описание:</th>
+            <td>@Model.Book.Description</td>
+        </tr>
+        <tr>
+            <th>Цена:</th>
+            <td>@Model.Book.Price</td>
+        </tr>
+        <tr>
+            <th>Цвет:</th>
+            <td>@Model.Book.Color</td>
+        </tr>
+        <tr>
+            <th>Вес:</th>
+            <td>@Model.Book.Weight</td>
+        </tr>
+        <tr>
+            <th>Размер:</th>
+            <td>@Model.Book.Size</td>
+        </tr>
+
+
+
+        <tr>
+            <th>Категории:</th>
+            <td>
+                @foreach (var category in Model.Categories)
+                {
+                    @category.Name <a asp-controller="Categories" asp-action="GetCategoryById"
+                                      asp-route-categoryId="@category.Id">Детали категории</a><br />
+                }
+            </td>
+        </tr>
+    </table>
+    <br />
+    <div class="form-group text-center">
+        <a class="btn btn-sm btn-primary" asp-controller="Home" asp-action="UpdateBook"
+           asp-route-bookId="@Model.Book.Id">Обновить товар</a>
+        <a class="btn btn-sm btn-danger" asp-controller="Home" asp-action="DeleteBook"
+           asp-route-bookId="@Model.Book.Id">Удалить товар</a>
+        
+        
+    </div>
+    <br /><br />
+    <h4>@ViewBag.ReviewsMessage</h4>
+    
+</div>
+

@@ -1,0 +1,28 @@
+﻿@model ItemApiProject.Dtos.BookDto
+@{
+    ViewData["Title"] = "DeleteBook";
+}
+
+<h1>Вы хотите удалить товар @Model.Title ?</h1>
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<form asp-controller="Home" asp-action="DeleteBook" method="post" asp-route-bookId="@Model.Id" 
+asp-route-bookTitle="@Model.Title">
+    <div>
+        <p>
+            <strong>Наименование товара:</strong>
+            <span>@Model.Title</span>
+        </p>
+        <p>
+            <strong>Цена:</strong>
+            <span>@Model.Price</span>
+        </p>
+
+
+        <input type="submit" value="Удалить" class="btn btn-sm btn-danger" />
+    </div>
+</form>
+<a asp-controller="Home" asp-action="GetBookById" asp-route-bookId="@Model.Id" class="btn btn-sm btn-primary">
+Отменить
+</a>
+

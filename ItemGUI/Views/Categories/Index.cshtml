@@ -1,0 +1,19 @@
+﻿@model IEnumerable<ItemApiProject.Dtos.CategoryDto>
+@{
+    ViewData["Title"] = "Index";
+}
+<h2>@ViewBag.Message</h2>
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<h3 class="text-success">@ViewBag.SuccessMessage</h3>
+<div>
+    <h2>Лист категории</h2>
+    <br />
+    @foreach (var item in Model)
+    {
+        <p>
+            <strong>@item.Name</strong>
+            <a asp-controller="Categories" asp-action="GetCategoryById" asp-route-categoryId="@item.Id"> | Детали</a>
+            <a asp-controller="Categories" asp-action="DeleteCategory" asp-route-categoryId="@item.Id"> | Удалить категорию</a>
+        </p>
+    }
+</div>

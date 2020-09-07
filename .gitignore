@@ -3,3 +3,7 @@
 ################################################################################
 
 /.vs
+/ItemApiProject/obj
+/ItemGUI/obj
+/ItemApiProject/bin/Debug/netcoreapp2.2
+/ItemGUI/bin/Debug/netcoreapp2.2

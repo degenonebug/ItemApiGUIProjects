@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ItemGUI.ViewModels.BookCategoriesViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<h4>@ViewBag.Message</h4>
+<h3 class="text-success">@ViewBag.SuccessMessage</h3>
+<div>
+    <h2>Все товары</h2>
+    <table class="table">
+        <tr>
+            <th>Наименование товара</th>
+            <th>Описание</th>
+            <th>Цена</th>
+            <th>Категории</th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Book.Title</td>
+                <td>@item.Book.Description</td>
+                <td>@item.Book.Price</td>
+                
+                
+                
+                <td>
+                    @{
+                        foreach (var category in item.Categories)
+                        {
+                            @category.Name <a asp-controller="Categories" asp-action="GetCategoryById"
+                                              asp-route-categoryId="@category.Id">Детали категории</a><br />
+                        }
+                    }
+                </td>
+                <td>
+                    <a asp-controller="Home" asp-action="GetBookById"
+                       asp-route-bookId="@item.Book.Id">Детали товара</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

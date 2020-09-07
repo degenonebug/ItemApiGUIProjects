@@ -1,0 +1,19 @@
+﻿@model ItemApiProject.Models.Category
+@{
+    ViewData["Title"] = "CreateCountry";
+}
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<h1>Добавить новую категорию</h1>
+<form asp-controller="Categories" asp-action="CreateCategory" method="post">
+    <div class="form-group">
+        <div>
+            <label asp-for="Name">Наименование категории:</label>
+        </div>
+        <div>
+            <input asp-for="Name" />
+        </div>
+        <br />
+        <input type="submit" value="Добавить" class="btn btn-sm btn-primary" />
+    </div>
+</form>
+
